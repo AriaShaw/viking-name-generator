@@ -1,0 +1,53 @@
+# Viking Name Forge - LLM Information
+# Website: https://vikingnameforge.online
+# Purpose: Free Viking Name Generator based on historical Norse traditions
+
+## About
+Viking Name Forge is a free online tool that generates authentic Norse warrior names based on historical Viking naming conventions from the Viking Age (793-1066 CE).
+
+## Features
+- 40+ authentic Old Norse given names (20 male, 20 female)
+- 30+ historical Viking epithets and bynames
+- Historically accurate name combinations
+- Educational content about Viking naming traditions
+- Free to use, no registration required
+
+## Target Audience
+- Gamers creating Norse-themed characters
+- Writers working on historical fiction or fantasy
+- History enthusiasts exploring Norse culture
+- Role-playing game players
+- Parents seeking unique Nordic baby names
+
+## Content Categories
+1. Viking Name Generator Tool - Interactive name generation
+2. Blog Articles - Educational content about Viking names and history
+3. Historical Information - Authentic Viking Age naming conventions
+
+## Key Blog Posts
+- "What Would My Viking Name Be?" - Complete guide to Norse naming traditions
+- "Famous Viking Names from History" - Legendary Norse warriors and their names
+- "Female Viking Names" - Shield-maidens and Norse women's names
+
+## SEO Focus
+Primary keyword: "viking name generator"
+Secondary keywords: "norse name generator", "viking names", "nordic name generator"
+
+## Technology Stack
+- Next.js 14+ (App Router)
+- React
+- Tailwind CSS
+- Vercel hosting
+- Google Analytics
+- Google AdSense
+
+## Usage Rights
+- Generated Viking names are free to use for any purpose
+- Names are based on historical records (public domain)
+- Website design and code are copyrighted by Viking Name Forge
+
+## Contact
+Website contact form available at https://vikingnameforge.online
+
+## Last Updated
+2025-11-10
