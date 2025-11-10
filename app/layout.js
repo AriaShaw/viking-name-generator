@@ -102,26 +102,34 @@ export default function RootLayout({ children }) {
     ]
   };
 
+  // Only enable Google Analytics in production
+  const isProduction = process.env.NODE_ENV === 'production' &&
+                       process.env.NEXT_PUBLIC_VERCEL_ENV === 'production';
+
   return (
     <html lang="en">
       <head>
-        {/* Google Analytics */}
-        <Script
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-9S4ZQ0VR01"
-        />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-9S4ZQ0VR01');
-            `,
-          }}
-        />
+        {/* Google Analytics - Production Only */}
+        {isProduction && (
+          <>
+            <Script
+              strategy="afterInteractive"
+              src="https://www.googletagmanager.com/gtag/js?id=G-9S4ZQ0VR01"
+            />
+            <Script
+              id="google-analytics"
+              strategy="afterInteractive"
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', 'G-9S4ZQ0VR01');
+                `,
+              }}
+            />
+          </>
+        )}
 
         {/* Schema.org Structured Data */}
         <script
