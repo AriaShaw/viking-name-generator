@@ -1,7 +1,6 @@
 import NameGenerator from '@/components/NameGenerator';
 import AdSenseSlot from '@/components/AdSenseSlot';
 import Navigation from '@/components/Navigation';
-import CookieConsent from '@/components/CookieConsent';
 
 export default function Home() {
   return (
@@ -307,9 +306,6 @@ export default function Home() {
           </div>
         </div>
       </footer>
-
-      {/* Cookie Consent Banner */}
-      <CookieConsent />
 
     </div>
   );
