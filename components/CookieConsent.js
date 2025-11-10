@@ -26,12 +26,21 @@ export default function CookieConsent() {
   if (!showBanner) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-gray-900 text-white p-4 shadow-2xl z-50 border-t-4 border-blue-600">
+    <div className="fixed bottom-0 left-0 right-0 bg-viking-stone bg-opacity-98 backdrop-blur-sm p-4 shadow-2xl z-50 border-t-2 border-viking-gold border-opacity-60">
+      {/* Runic decoration top border */}
+      <div className="absolute top-0 left-0 right-0 flex justify-center gap-6 opacity-30 text-viking-gold text-xs -mt-2">
+        <span>᛫</span>
+        <span>᛫</span>
+        <span>᛫</span>
+        <span>᛫</span>
+        <span>᛫</span>
+      </div>
+
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex-1">
-          <p className="text-sm md:text-base">
+          <p className="text-sm md:text-base text-viking-frost opacity-90 leading-relaxed">
             We use cookies to improve your experience and display personalized ads. By using our site, you consent to cookies.{' '}
-            <Link href="/privacy" className="underline hover:text-blue-300">
+            <Link href="/privacy" className="text-viking-gold hover:text-viking-rune underline transition-colors font-['Cinzel',serif] font-semibold">
               Learn more
             </Link>
           </p>
@@ -39,13 +48,13 @@ export default function CookieConsent() {
         <div className="flex gap-3 flex-shrink-0">
           <button
             onClick={declineCookies}
-            className="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-md text-sm font-medium transition-colors"
+            className="px-4 py-2 bg-viking-wood border border-viking-gold border-opacity-50 text-viking-frost hover:border-viking-gold hover:border-opacity-100 rounded font-['Cinzel',serif] text-sm font-medium transition-all duration-300"
           >
             Decline
           </button>
           <button
             onClick={acceptCookies}
-            className="px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded-md text-sm font-medium transition-colors"
+            className="btn-viking text-sm py-2 px-6"
           >
             Accept
           </button>

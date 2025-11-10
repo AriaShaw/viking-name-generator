@@ -327,6 +327,7 @@ body::before {
    PROSE STYLES (Blog Content)
    =================================== */
 .prose {
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: 1.125rem;
   line-height: 1.8;
   color: var(--foreground);
@@ -354,7 +355,18 @@ body::before {
   font-weight: 600;
 }
 
+.prose h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--viking-gold);
+  font-weight: 600;
+}
+
 .prose p {
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: 1.125rem;
   line-height: 1.8;
   margin-bottom: 1.5rem;
@@ -362,6 +374,7 @@ body::before {
 }
 
 .prose ul, .prose ol {
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: 1.125rem;
   line-height: 1.75;
   color: rgba(232, 220, 199, 0.85);
