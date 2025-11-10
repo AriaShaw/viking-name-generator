@@ -1,8 +1,28 @@
 @import "tailwindcss";
 
+/* ===================================
+   VIKING THEME - COLOR PALETTE
+   =================================== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary Viking Colors */
+  --viking-dark: #1a1410;          /* Deep charcoal, like ancient stone */
+  --viking-stone: #2d2520;          /* Stone grey */
+  --viking-wood: #3d3127;           /* Aged wood */
+  --viking-bronze: #cd7f32;         /* Bronze/copper */
+  --viking-gold: #d4af37;           /* Ancient gold */
+  --viking-iron: #71797e;           /* Iron grey */
+  --viking-blood: #8b0000;          /* Dark blood red */
+  --viking-ocean: #1e3a5f;          /* Deep ocean blue */
+  --viking-frost: #e8f4f8;          /* Frost white */
+  --viking-rune: #ffd700;           /* Glowing rune gold */
+
+  /* Background */
+  --background: #0f0d0a;
+  --foreground: #e8dcc7;
+
+  /* Borders and accents */
+  --border-runic: 2px solid rgba(212, 175, 55, 0.3);
+  --shadow-epic: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(212, 175, 55, 0.1);
 }
 
 @theme inline {
@@ -12,15 +32,504 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ===================================
+   BODY & BASE STYLES
+   =================================== */
+body {
+  background: linear-gradient(180deg, #0f0d0a 0%, #1a1410 100%);
+  color: var(--foreground);
+  font-family: 'Cinzel', Georgia, serif;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Subtle parchment texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.01) 0px,
+      transparent 1px,
+      transparent 2px,
+      rgba(255, 255, 255, 0.01) 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.01) 0px,
+      transparent 1px,
+      transparent 2px,
+      rgba(255, 255, 255, 0.01) 3px
+    );
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ===================================
+   VIKING DECORATIVE BORDERS
+   =================================== */
+.viking-border {
+  border: 3px solid;
+  border-image: linear-gradient(
+    135deg,
+    var(--viking-bronze) 0%,
+    var(--viking-gold) 50%,
+    var(--viking-bronze) 100%
+  ) 1;
+  box-shadow:
+    inset 0 0 20px rgba(212, 175, 55, 0.1),
+    0 0 30px rgba(212, 175, 55, 0.2);
+}
+
+.viking-border-light {
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+}
+
+/* Runic corner decorations */
+.runic-corners {
+  position: relative;
+}
+
+.runic-corners::before,
+.runic-corners::after {
+  content: '᛭';
+  position: absolute;
+  color: var(--viking-gold);
+  font-size: 1.5rem;
+  opacity: 0.6;
+}
+
+.runic-corners::before {
+  top: -10px;
+  left: -10px;
+}
+
+.runic-corners::after {
+  bottom: -10px;
+  right: -10px;
+}
+
+/* ===================================
+   VIKING BUTTONS
+   =================================== */
+.btn-viking {
+  background: linear-gradient(135deg,
+    var(--viking-wood) 0%,
+    var(--viking-stone) 100%
+  );
+  border: 2px solid var(--viking-gold);
+  color: var(--viking-gold);
+  padding: 1rem 2.5rem;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.btn-viking::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 55, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.btn-viking:hover {
+  background: linear-gradient(135deg,
+    var(--viking-stone) 0%,
+    var(--viking-wood) 100%
+  );
+  border-color: var(--viking-rune);
+  color: var(--viking-rune);
+  box-shadow:
+    0 6px 25px rgba(212, 175, 55, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 30px rgba(212, 175, 55, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-viking:hover::before {
+  left: 100%;
+}
+
+.btn-viking:active {
+  transform: translateY(0);
+  box-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.4),
+    inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* ===================================
+   VIKING INPUT FIELDS
+   =================================== */
+.input-viking {
+  background: rgba(29, 21, 16, 0.8);
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  color: var(--viking-frost);
+  padding: 0.875rem 1.25rem;
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.input-viking:focus {
+  outline: none;
+  border-color: var(--viking-gold);
+  box-shadow:
+    inset 0 2px 8px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.input-viking::placeholder {
+  color: rgba(232, 220, 199, 0.4);
+  font-style: italic;
+}
+
+/* ===================================
+   VIKING CARDS & CONTAINERS
+   =================================== */
+.viking-card {
+  background: linear-gradient(135deg,
+    rgba(45, 37, 32, 0.9) 0%,
+    rgba(29, 21, 16, 0.95) 100%
+  );
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 0 40px rgba(212, 175, 55, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.viking-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--viking-gold),
+    transparent
+  );
+  opacity: 0.3;
+}
+
+/* Generated name result card */
+.name-result-viking {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(212, 175, 55, 0.15) 0%,
+    rgba(29, 21, 16, 0.95) 70%
+  );
+  border: 3px solid var(--viking-gold);
+  padding: 2.5rem;
+  border-radius: 12px;
+  text-align: center;
+  position: relative;
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.6),
+    inset 0 0 60px rgba(212, 175, 55, 0.1),
+    0 0 80px rgba(212, 175, 55, 0.2);
+  animation: runeGlow 3s ease-in-out infinite;
+}
+
+@keyframes runeGlow {
+  0%, 100% {
+    box-shadow:
+      0 10px 40px rgba(0, 0, 0, 0.6),
+      inset 0 0 60px rgba(212, 175, 55, 0.1),
+      0 0 60px rgba(212, 175, 55, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 10px 40px rgba(0, 0, 0, 0.6),
+      inset 0 0 60px rgba(212, 175, 55, 0.15),
+      0 0 100px rgba(212, 175, 55, 0.3);
   }
 }
 
-body {
-  background: var(--background);
+/* ===================================
+   TYPOGRAPHY - VIKING STYLE
+   =================================== */
+.text-viking-gold {
+  color: var(--viking-gold);
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+.text-viking-rune {
+  color: var(--viking-rune);
+  text-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+}
+
+.heading-epic {
+  font-family: 'Cinzel', serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--viking-gold);
+  text-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.8),
+    0 0 30px rgba(212, 175, 55, 0.4);
+  position: relative;
+}
+
+.heading-epic::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--viking-gold),
+    transparent
+  );
+}
+
+/* ===================================
+   PROSE STYLES (Blog Content)
+   =================================== */
+.prose {
+  font-size: 1.125rem;
+  line-height: 1.8;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+.prose h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  line-height: 1.3;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  color: var(--viking-gold);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.prose h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  line-height: 1.4;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--viking-bronze);
+  font-weight: 600;
+}
+
+.prose p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  color: rgba(232, 220, 199, 0.9);
+}
+
+.prose ul, .prose ol {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: rgba(232, 220, 199, 0.85);
+}
+
+.prose li {
+  margin-bottom: 0.75rem;
+}
+
+.prose strong {
+  color: var(--viking-gold);
+  font-weight: 700;
+}
+
+.prose a {
+  color: var(--viking-gold);
+  text-decoration: underline;
+  text-decoration-color: rgba(212, 175, 55, 0.3);
+  transition: all 0.3s ease;
+}
+
+.prose a:hover {
+  color: var(--viking-rune);
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  text-decoration-color: var(--viking-rune);
+}
+
+/* ===================================
+   NAVIGATION
+   =================================== */
+.nav-viking {
+  background: linear-gradient(180deg,
+    rgba(26, 20, 16, 0.98) 0%,
+    rgba(29, 21, 16, 0.95) 100%
+  );
+  border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.5),
+    0 1px 0 rgba(212, 175, 55, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+/* ===================================
+   SCROLLBAR - VIKING STYLE
+   =================================== */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--viking-dark);
+  border-left: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg,
+    var(--viking-bronze) 0%,
+    var(--viking-wood) 100%
+  );
+  border-radius: 6px;
+  border: 2px solid var(--viking-dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg,
+    var(--viking-gold) 0%,
+    var(--viking-bronze) 100%
+  );
+}
+
+/* ===================================
+   UTILITY CLASSES
+   =================================== */
+.bg-viking-dark {
+  background-color: var(--viking-dark);
+}
+
+.bg-viking-stone {
+  background-color: var(--viking-stone);
+}
+
+.bg-viking-parchment {
+  background: linear-gradient(135deg,
+    rgba(232, 220, 199, 0.95) 0%,
+    rgba(220, 200, 170, 0.98) 100%
+  );
+  color: var(--viking-dark);
+}
+
+.border-viking-gold {
+  border-color: var(--viking-gold);
+}
+
+/* Runic divider */
+.runic-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 2rem 0;
+  opacity: 0.6;
+}
+
+.runic-divider::before,
+.runic-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.runic-divider::before {
+  margin-right: 1rem;
+}
+
+.runic-divider::after {
+  margin-left: 1rem;
+}
+
+/* ===================================
+   ANIMATIONS
+   =================================== */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer {
+  animation: shimmer 3s infinite linear;
+  background: linear-gradient(
+    90deg,
+    rgba(212, 175, 55, 0) 0%,
+    rgba(212, 175, 55, 0.3) 50%,
+    rgba(212, 175, 55, 0) 100%
+  );
+  background-size: 1000px 100%;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ===================================
+   RESPONSIVE ADJUSTMENTS
+   =================================== */
+@media (max-width: 768px) {
+  .heading-epic {
+    font-size: 1.75rem;
+    letter-spacing: 1px;
+  }
+
+  .btn-viking {
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
+  }
+
+  .viking-card {
+    padding: 1.5rem;
+  }
 }
