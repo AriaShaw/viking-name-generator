@@ -3,8 +3,11 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
 export const metadata = {
-  title: 'Famous Viking Names from History: Meanings & Legendary Warriors | 2025',
-  description: 'Discover 20+ famous Viking names from history including Ragnar Lothbrok, Leif Erikson, and Lagertha. Learn the meanings, stories, and legends behind the most iconic Norse warriors and explorers.',
+  title: 'Famous Viking Names: History & Meanings',
+  description: 'Explore 20+ famous Viking names including Ragnar Lothbrok, Leif Erikson, and Lagertha. Learn the meanings and legends behind iconic Norse warriors.',
+  alternates: {
+    canonical: 'https://vikingnameforge.online/blog/famous-viking-names',
+  },
   openGraph: {
     title: 'Famous Viking Names from History: Meanings & Legendary Warriors',
     description: 'Learn the meanings, stories, and legends behind the most iconic Norse warriors.',

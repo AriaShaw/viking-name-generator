@@ -3,8 +3,11 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
 export const metadata = {
-  title: 'What Would My Viking Name Be? Complete Guide to Norse Names | 2025',
-  description: 'Discover what your Viking name would be using authentic Norse naming traditions. Learn how Vikings created names, historical conventions, and generate your own warrior name today.',
+  title: 'What Would My Viking Name Be? Norse Names Guide',
+  description: 'Discover your Viking name using authentic Norse traditions. Learn historical naming conventions and generate your own Norse warrior name today.',
+  alternates: {
+    canonical: 'https://vikingnameforge.online/blog/what-would-my-viking-name-be',
+  },
   openGraph: {
     title: 'What Would My Viking Name Be? Complete Guide',
     description: 'Discover authentic Viking naming traditions and create your own Norse warrior name',

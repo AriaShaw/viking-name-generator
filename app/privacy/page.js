@@ -5,6 +5,9 @@ import Footer from '@/components/Footer';
 export const metadata = {
   title: 'Privacy Policy - Viking Name Generator',
   description: 'Privacy policy for Viking Name Forge. Learn how we collect, use, and protect your information.',
+  alternates: {
+    canonical: 'https://vikingnameforge.online/privacy',
+  },
   robots: {
     index: true,
     follow: true,

@@ -5,6 +5,9 @@ import Footer from '@/components/Footer';
 export const metadata = {
   title: 'Terms of Service - Viking Name Generator',
   description: 'Terms of service for Viking Name Forge. Read our terms and conditions for using our free Viking name generator.',
+  alternates: {
+    canonical: 'https://vikingnameforge.online/terms',
+  },
   robots: {
     index: true,
     follow: true,

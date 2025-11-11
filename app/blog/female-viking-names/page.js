@@ -3,8 +3,11 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
 export const metadata = {
-  title: 'Female Viking Names: 25+ Authentic Norse Women & Shield-Maiden Names',
-  description: 'Discover 25+ authentic female Viking names with meanings from history and mythology. Learn about shield-maidens, Norse women warriors, and powerful feminine names from the Viking Age.',
+  title: 'Female Viking Names: Norse Women & Shield-Maidens',
+  description: 'Discover 25+ authentic female Viking names with meanings from history and mythology. Learn about shield-maidens and powerful Norse women warriors.',
+  alternates: {
+    canonical: 'https://vikingnameforge.online/blog/female-viking-names',
+  },
   openGraph: {
     title: 'Female Viking Names: 25+ Authentic Norse Women & Shield-Maiden Names',
     description: 'Discover 25+ authentic female Viking names with meanings from history and mythology.',

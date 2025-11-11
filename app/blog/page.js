@@ -3,8 +3,11 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
 export const metadata = {
-  title: 'Viking Names Blog - Norse History & Name Meanings | Viking Name Forge',
+  title: 'Viking Names Blog - Norse History & Name Meanings',
   description: 'Explore the fascinating world of Viking names, Norse history, and Scandinavian naming traditions. Learn about famous Vikings, name meanings, and historical context.',
+  alternates: {
+    canonical: 'https://vikingnameforge.online/blog',
+  },
   openGraph: {
     title: 'Viking Names Blog - Norse History & Name Meanings',
     description: 'Discover the stories behind Viking names and Norse naming traditions',

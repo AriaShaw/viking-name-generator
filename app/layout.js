@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Cinzel } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
@@ -12,9 +12,19 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const cinzel = Cinzel({
+  variable: "--font-cinzel",
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "900"],
+  display: "swap",
+});
+
 export const metadata = {
-  title: 'Viking Name Generator - Create Your Norse Warrior Name | Free Tool',
+  title: 'Viking Name Generator - Free Norse Warrior Names',
   description: 'Generate authentic Viking names instantly. Our free Viking name generator creates unique Norse warrior names based on historical traditions. Try it now!',
+  alternates: {
+    canonical: 'https://vikingnameforge.online',
+  },
   authors: [{ name: 'Viking Name Forge' }],
   icons: {
     icon: [
@@ -152,7 +162,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable} antialiased`}
       >
         {children}
       </body>
