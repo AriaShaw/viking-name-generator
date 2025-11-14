@@ -6,6 +6,7 @@ import vikingData from '@/data/vikingNames';
 export default function NameGenerator() {
   const [gender, setGender] = useState('male');
   const [generatedName, setGeneratedName] = useState(null);
+  const [showAboutNames, setShowAboutNames] = useState(false);
 
   const generateVikingName = () => {
     const { names, epithets } = vikingData[gender];
@@ -14,10 +15,12 @@ export default function NameGenerator() {
     const epithet = epithets[Math.floor(Math.random() * epithets.length)];
 
     setGeneratedName({
-      fullName: `${firstName.name} ${epithet.name}`,
       oldNorse: `${firstName.norse} ${epithet.name}`,
-      meaning: `${firstName.meaning} - ${epithet.meaning}`,
-      context: epithet.context
+      modernName: firstName.name,
+      nameMeaning: firstName.meaning,
+      epithetName: epithet.name,
+      epithetMeaning: epithet.meaning,
+      epithetContext: epithet.context
     });
   };
 
@@ -130,45 +133,54 @@ export default function NameGenerator() {
             <p className="text-viking-gold text-sm tracking-[0.3em] uppercase mb-2 opacity-75 font-['Cinzel',serif]">
               Your Viking Identity
             </p>
-            <h2 className="text-5xl md:text-6xl font-['Cinzel',serif] font-black text-viking-rune mb-4 tracking-wide">
-              {generatedName.fullName}
-            </h2>
-            <p className="text-2xl md:text-3xl text-viking-bronze italic opacity-90 font-['Cinzel',serif]">
+            <h2 className="text-5xl md:text-6xl font-['Cinzel',serif] font-black text-viking-rune mb-3 tracking-wide">
               {generatedName.oldNorse}
+            </h2>
+            <p className="text-lg text-viking-frost opacity-70 mb-6">
+              Modern form: <span className="text-viking-bronze font-['Cinzel',serif]">{generatedName.modernName} {generatedName.epithetName}</span>
             </p>
+
+            {/* Name Meaning - Combined Display */}
+            <div className="text-viking-frost space-y-3">
+              <p className="text-xl leading-relaxed">
+                <span className="text-viking-gold font-['Cinzel',serif]">"{generatedName.nameMeaning}"</span> - from Old Norse origins
+              </p>
+              <p className="text-lg leading-relaxed border-l-2 border-viking-gold pl-4 py-2 bg-viking-wood bg-opacity-30">
+                <span className="text-viking-gold font-['Cinzel',serif] uppercase tracking-wide">{generatedName.epithetName}</span>
+                <br />
+                <span className="text-base opacity-90">{generatedName.epithetMeaning} - {generatedName.epithetContext}</span>
+              </p>
+            </div>
           </div>
 
-          {/* Name Details */}
-          <div className="space-y-6">
-            {/* Meaning Section */}
-            <div className="viking-card bg-opacity-50">
-              <div className="flex items-start gap-3">
-                <span className="text-2xl mt-1 flex-shrink-0">📜</span>
-                <div>
-                  <h3 className="text-lg font-['Cinzel',serif] font-bold text-viking-gold mb-2 uppercase tracking-wide">
-                    Meaning
-                  </h3>
-                  <p className="text-viking-frost leading-relaxed">
-                    {generatedName.meaning}
-                  </p>
-                </div>
-              </div>
-            </div>
+          {/* About These Names - Collapsible Info */}
+          <div className="mb-6">
+            <button
+              onClick={() => setShowAboutNames(!showAboutNames)}
+              className="w-full text-left px-4 py-3 bg-viking-wood bg-opacity-30 border border-viking-gold border-opacity-20 hover:border-opacity-40 transition-all duration-300 flex items-center justify-between group"
+            >
+              <span className="text-viking-gold font-['Cinzel',serif] text-sm tracking-wide uppercase flex items-center gap-2">
+                <span className="text-lg">ℹ️</span>
+                About These Names
+              </span>
+              <span className={`text-viking-gold transform transition-transform duration-300 ${showAboutNames ? 'rotate-180' : ''}`}>
+                ▼
+              </span>
+            </button>
 
-            {/* Historical Context Section */}
-            <div className="viking-card bg-opacity-50">
-              <div className="flex items-start gap-3">
-                <span className="text-2xl mt-1 flex-shrink-0">⚔️</span>
-                <div>
-                  <h3 className="text-lg font-['Cinzel',serif] font-bold text-viking-gold mb-2 uppercase tracking-wide">
-                    Historical Context
-                  </h3>
-                  <p className="text-viking-frost leading-relaxed">
-                    {generatedName.context}
-                  </p>
-                </div>
+            {showAboutNames && (
+              <div className="px-4 py-4 bg-viking-stone bg-opacity-40 border-x border-b border-viking-gold border-opacity-20 text-viking-frost text-sm leading-relaxed space-y-2">
+                <p>
+                  <strong className="text-viking-gold">Old Norse forms</strong> (like {generatedName.oldNorse.split(' ')[0]}) are historically accurate for the Viking Age (793-1066 CE) and include authentic Old Norse spellings with special characters.
+                </p>
+                <p>
+                  <strong className="text-viking-gold">Modern forms</strong> (like {generatedName.modernName}) are simplified adaptations used in contemporary contexts, games, and fiction. They're easier to pronounce but less historically authentic.
+                </p>
+                <p className="text-viking-bronze italic">
+                  Tip: Use Old Norse forms for historical accuracy; use modern forms for ease of pronunciation.
+                </p>
               </div>
-            </div>
+            )}
           </div>
 
           {/* Runic Divider */}
