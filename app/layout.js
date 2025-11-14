@@ -46,11 +46,20 @@ export const metadata = {
     type: 'website',
     url: 'https://vikingnameforge.online',
     siteName: 'Viking Name Forge',
+    images: [
+      {
+        url: 'https://vikingnameforge.online/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Viking Name Generator - Create Your Norse Warrior Name',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Viking Name Generator',
     description: 'Generate authentic Viking names based on historical traditions.',
+    images: ['https://vikingnameforge.online/og-image.png'],
   },
   robots: {
     index: true,

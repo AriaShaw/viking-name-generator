@@ -7,6 +7,7 @@ export default function NameGenerator() {
   const [gender, setGender] = useState('male');
   const [generatedName, setGeneratedName] = useState(null);
   const [showAboutNames, setShowAboutNames] = useState(false);
+  const [copySuccess, setCopySuccess] = useState(false);
 
   const generateVikingName = () => {
     const { names, epithets } = vikingData[gender];
@@ -22,6 +23,56 @@ export default function NameGenerator() {
       epithetMeaning: epithet.meaning,
       epithetContext: epithet.context
     });
+    setCopySuccess(false);
+  };
+
+  const handleCopyName = async () => {
+    if (!generatedName) return;
+
+    const textToCopy = `My Viking name is ${generatedName.oldNorse}! Generate yours at vikingnameforge.online`;
+
+    try {
+      await navigator.clipboard.writeText(textToCopy);
+      setCopySuccess(true);
+      setTimeout(() => setCopySuccess(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  };
+
+  const handleShareTwitter = () => {
+    if (!generatedName) return;
+
+    const text = `My Viking name is ${generatedName.oldNorse}! Generate yours at`;
+    const url = 'https://vikingnameforge.online';
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+    window.open(twitterUrl, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleShareFacebook = () => {
+    if (!generatedName) return;
+
+    const url = 'https://vikingnameforge.online';
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+    window.open(facebookUrl, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleNativeShare = async () => {
+    if (!generatedName) return;
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'My Viking Name',
+          text: `My Viking name is ${generatedName.oldNorse}! Generate yours at`,
+          url: 'https://vikingnameforge.online'
+        });
+      } catch (err) {
+        if (err.name !== 'AbortError') {
+          console.error('Error sharing:', err);
+        }
+      }
+    }
   };
 
   return (
@@ -181,6 +232,60 @@ export default function NameGenerator() {
                 </p>
               </div>
             )}
+          </div>
+
+          {/* Share Section */}
+          <div className="mb-6">
+            <div className="text-center mb-4">
+              <p className="text-viking-gold font-['Cinzel',serif] text-sm tracking-wide uppercase mb-4">
+                Share Your Viking Name
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                {/* Copy to Clipboard */}
+                <button
+                  onClick={handleCopyName}
+                  className="px-6 py-3 bg-viking-wood bg-opacity-50 border border-viking-gold border-opacity-30 hover:border-opacity-60 hover:bg-opacity-70 transition-all duration-300 text-viking-frost flex items-center gap-2 group"
+                  title="Copy to clipboard"
+                >
+                  <span className="text-lg">{copySuccess ? '✓' : '📋'}</span>
+                  <span className="font-['Cinzel',serif] text-sm">
+                    {copySuccess ? 'Copied!' : 'Copy'}
+                  </span>
+                </button>
+
+                {/* Twitter/X Share */}
+                <button
+                  onClick={handleShareTwitter}
+                  className="px-6 py-3 bg-viking-wood bg-opacity-50 border border-viking-gold border-opacity-30 hover:border-opacity-60 hover:bg-opacity-70 transition-all duration-300 text-viking-frost flex items-center gap-2 group"
+                  title="Share on Twitter/X"
+                >
+                  <span className="text-lg">𝕏</span>
+                  <span className="font-['Cinzel',serif] text-sm">Twitter</span>
+                </button>
+
+                {/* Facebook Share */}
+                <button
+                  onClick={handleShareFacebook}
+                  className="px-6 py-3 bg-viking-wood bg-opacity-50 border border-viking-gold border-opacity-30 hover:border-opacity-60 hover:bg-opacity-70 transition-all duration-300 text-viking-frost flex items-center gap-2 group"
+                  title="Share on Facebook"
+                >
+                  <span className="text-lg">f</span>
+                  <span className="font-['Cinzel',serif] text-sm">Facebook</span>
+                </button>
+
+                {/* Native Share (Mobile) */}
+                {typeof navigator !== 'undefined' && navigator.share && (
+                  <button
+                    onClick={handleNativeShare}
+                    className="px-6 py-3 bg-viking-wood bg-opacity-50 border border-viking-gold border-opacity-30 hover:border-opacity-60 hover:bg-opacity-70 transition-all duration-300 text-viking-frost flex items-center gap-2 group"
+                    title="Share"
+                  >
+                    <span className="text-lg">↗</span>
+                    <span className="font-['Cinzel',serif] text-sm">Share</span>
+                  </button>
+                )}
+              </div>
+            </div>
           </div>
 
           {/* Runic Divider */}
