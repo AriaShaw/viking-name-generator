@@ -266,6 +266,11 @@ export default function Home() {
                   </a>
                 </li>
                 <li>
+                  <a href="/contact" className="text-viking-frost opacity-80 hover:text-viking-gold hover:opacity-100 transition-all duration-300">
+                    Contact Us
+                  </a>
+                </li>
+                <li>
                   <a href="/privacy" className="text-viking-frost opacity-80 hover:text-viking-gold hover:opacity-100 transition-all duration-300">
                     Privacy Policy
                   </a>

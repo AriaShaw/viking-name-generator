@@ -35,6 +35,14 @@ export default function Navigation() {
           </Link>
 
           <Link
+            href="/contact"
+            className="text-viking-frost hover:text-viking-gold transition-all duration-300 font-['Cinzel',serif] tracking-wide relative group"
+          >
+            <span className="relative z-10">Contact</span>
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-viking-gold group-hover:w-full transition-all duration-300"></span>
+          </Link>
+
+          <Link
             href="/privacy"
             className="text-viking-frost hover:text-viking-gold transition-all duration-300 font-['Cinzel',serif] tracking-wide relative group opacity-75"
           >
