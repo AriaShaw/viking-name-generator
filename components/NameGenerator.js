@@ -323,7 +323,7 @@ export default function NameGenerator() {
             </div>
             <div className="flex items-center gap-2">
               <span className="text-viking-gold">✓</span>
-              <span>Historically Accurate</span>
+              <span>Based on Sagas</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-viking-gold">✓</span>

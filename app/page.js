@@ -52,7 +52,7 @@ export default function Home() {
           {/* Feature Stats */}
           <div className="flex flex-wrap justify-center gap-8 text-sm">
             <div className="viking-card px-6 py-4 min-w-[180px]">
-              <div className="text-3xl font-bold text-viking-rune mb-1 font-['Cinzel',serif]">40+</div>
+              <div className="text-3xl font-bold text-viking-rune mb-1 font-['Cinzel',serif]">80+</div>
               <div className="text-viking-frost opacity-80 uppercase tracking-wider text-xs">Authentic Names</div>
             </div>
             <div className="viking-card px-6 py-4 min-w-[180px]">
@@ -60,8 +60,8 @@ export default function Home() {
               <div className="text-viking-frost opacity-80 uppercase tracking-wider text-xs">Historic Epithets</div>
             </div>
             <div className="viking-card px-6 py-4 min-w-[180px]">
-              <div className="text-3xl font-bold text-viking-rune mb-1 font-['Cinzel',serif]">100%</div>
-              <div className="text-viking-frost opacity-80 uppercase tracking-wider text-xs">Historically Accurate</div>
+              <div className="text-3xl font-bold text-viking-rune mb-1 font-['Cinzel',serif]">793-1066</div>
+              <div className="text-viking-frost opacity-80 uppercase tracking-wider text-xs">Viking Age Era</div>
             </div>
           </div>
         </div>
@@ -99,14 +99,14 @@ export default function Home() {
             {/* Feature 1 */}
             <div className="viking-card text-center group hover:border-viking-gold transition-all duration-300">
               <div className="mb-6">
-                <div className="text-6xl font-['Cinzel',serif] font-black text-viking-gold mb-2">40</div>
+                <div className="text-6xl font-['Cinzel',serif] font-black text-viking-gold mb-2">80</div>
                 <div className="h-1 w-16 bg-viking-gold mx-auto opacity-50"></div>
               </div>
               <h3 className="font-['Cinzel',serif] font-bold text-xl mb-4 text-viking-gold uppercase tracking-wide">
                 Authentic Names
               </h3>
               <p className="text-viking-frost opacity-80 leading-relaxed">
-                20 male and 20 female Old Norse names with accurate transliterations from historical sources
+                40 male and 40 female Old Norse names with accurate transliterations from historical sources
               </p>
             </div>
 
@@ -127,14 +127,14 @@ export default function Home() {
             {/* Feature 3 */}
             <div className="viking-card text-center group hover:border-viking-gold transition-all duration-300">
               <div className="mb-6">
-                <div className="text-6xl font-['Cinzel',serif] font-black text-viking-gold mb-2">793</div>
+                <div className="text-6xl font-['Cinzel',serif] font-black text-viking-gold mb-2">Free</div>
                 <div className="h-1 w-16 bg-viking-gold mx-auto opacity-50"></div>
               </div>
               <h3 className="font-['Cinzel',serif] font-bold text-xl mb-4 text-viking-gold uppercase tracking-wide">
-                Viking Age Era
+                Always Free
               </h3>
               <p className="text-viking-frost opacity-80 leading-relaxed">
-                Names from the authentic Viking Age period (793-1066 CE) in Norse history
+                No registration, no hidden costs. Generate unlimited Viking names forever
               </p>
             </div>
           </div>
